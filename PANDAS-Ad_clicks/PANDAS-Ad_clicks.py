@@ -3,9 +3,8 @@ import pandas as pd
 ad_clicks = pd.read_csv('ad_clicks.csv')
 # path 값끼리 묶어서 id 갯수 세기
 #print(ad_clicks.groupby('path').id.count().reset_index())
-
 #클릭한 시간이 있는지 여부를 나타내는 부울린 값으로 click열 새로 생성
-ad_clicks['click'] = ~ad_clicks.ad_click_time.isnull()
+ad_clicks['click'] = ad_clicks.ad_click_time.isnull()
 
 #path값에 click의 True, False값에 해당하는 id 갯수 세기
 #해당 광고를 클릭하여 들어왔는지 다른 경로로 들어왔는지 확인할 수 있으며 각각의 비중을 알 수 있다.
@@ -42,28 +41,3 @@ b_clicks_pivot['percent_clicked'] = b_clicks_pivot[True] / (b_clicks_pivot[True]
 #A그룹과 B그룹의 테이블 확인하기
 print(a_clicks_pivot)
 print(b_clicks_pivot)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
